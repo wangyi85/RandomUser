@@ -1,9 +1,12 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {memo} from "react";
+import {StatusBar, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {memo, useEffect} from "react";
 import {normalize} from "../consts/consts";
-import {StatusBar} from "expo-status-bar";
 
 const Home = memo(props => {
+    useEffect(() => {
+        StatusBar.setBackgroundColor('transparent');
+        StatusBar.setTranslucent(true);
+    }, [])
     const goToUsers = () => {
         props.navigation.navigate('Users');
     }
@@ -18,7 +21,6 @@ const Home = memo(props => {
             >
                 <Text style={styles.btnTxt}>Continue</Text>
             </TouchableOpacity>
-            <StatusBar hidden={true} />
         </View>
     )
 })
